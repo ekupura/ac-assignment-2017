@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #define DIM 5
+
 void printField(int field[DIM][DIM])
 {
     int i = 0,j = 0;
@@ -37,14 +38,14 @@ int checkOtherStone(int field[DIM][DIM],int i,int j)
     return 0;
 }
 
-void searchAnswer(int field[DIM][DIM],int i)
+int searchAnswer(int field[DIM][DIM],int i)
 {
     int j = 0;
     static int answer_number = 0;
     if (i == DIM) {
-        printf("<%d>\n",++answer_number);
+        printf("\n<%d>\n",++answer_number);
         printField(field);
-        return;
+        return 0;
     }
     for (j = 0;j < DIM;j++) {
         if (!checkOtherStone(field,i,j)) {
@@ -53,7 +54,7 @@ void searchAnswer(int field[DIM][DIM],int i)
             field[i][j] = 0; /* remove */
         }
     }
-    return;
+    return answer_number;
 }
 
 
@@ -66,7 +67,8 @@ int main()
             field[i][j] = 0;
         }
     }
-    searchAnswer(field,0);
+    int answer_number = searchAnswer(field,0);
+    printf("\n解の総数:%d個\n",answer_number);
     return 0;
 }
 
