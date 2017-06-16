@@ -32,7 +32,7 @@ int checkOtherStone(int field[DIM][DIM],int i,int j)
     for (u = i,v = j;u >= 0 && v < DIM;u--,v++) {
         if (field[u][v] == 1) return 1;
     }
-    for (u = i,v = j;u >= DIM && v >= 0;u++,v--) {
+    for (u = i,v = j;u < DIM && v >= 0;u++,v--) {
         if (field[u][v] == 1) return 1;
     }
     return 0;
